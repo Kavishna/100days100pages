@@ -1,0 +1,16 @@
+today i learn how to make card set with responsiveness
+
+Learn Flexbox In 20 Minutes | Learn HTML & CSS | Flexbox Tutorial
+by Dev Ed
+source: https://www.youtube.com/watch?v=FTlczfR82mQ&t=124s
+
+colors from
+https://flatuicolors.com/
+https://www.color-hex.com/
+
+
+font from
+https://fonts.google.com/specimen/Ubuntu
+
+icons from
+https://fontawesome.com/icons?d=gallery

@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+/* ubuntu font from googlefonts */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* colors by https://www.color-hex.com/ */
+  background-color: rgb(59, 60, 65);
+  display: flex;
+  flex-direction: column;
+  font-family: "Ubuntu", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 50px;
+  margin-bottom: 6%;
+  color: rgb(201, 201, 201);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap; /*this property gives responsivenes to cards*/
+  align-self: center;
+}
+
+.box {
+  height: 400px;
+  width: 250px;
+  margin: 30px;
+  background-color: rgb(32, 33, 37);
+}
+
+.top {
+  height: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom {
+  text-align: center;
+}
+
+.bottom h2 {
+  color: #d8d8d8;
+  padding-bottom: 5px;
+}
+
+.bottom p {
+  color: #838383;
+  padding: 10px 10px;
+  line-height: 1.5;
+}
+
+button {
+  border: 2px solid #d8d8d8;
+  background-color: transparent;
+  padding: 10px 20px;
+  color: #d8d8d8;
+  font-size: 15px;
+  margin-top: 18px;
+}
+
+i {
+  color: #929292;
+}
