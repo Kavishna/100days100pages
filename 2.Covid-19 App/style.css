@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #d5d0e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Karla", sans-serif;
+}
+
+.main {
+  height: 700px;
+  width: 400px;
+  background-color: #946868;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.top {
+  width: 100%;
+  height: 200px;
+  background-image: url(./images/myCountry.jpg);
+  background-repeat: no-repeat;
+}
+
+.cover {
+  position: relative;
+  color: rgb(209, 209, 209);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.616);
+  backdrop-filter: blur(8px);
+}
+
+.cover h1 {
+  position: absolute;
+  top: 30px;
+}
+
+h1 small {
+  font-size: 20px;
+}
+
+.datetime {
+  position: absolute;
+  bottom: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover p {
+  position: absolute;
+  bottom: 5px;
+  font-size: 10px;
+  left: 5px;
+}
+
+.bottom {
+  background-image: url(./images/pexels-anna-shvets-4167542.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.bcover {
+  height: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0.726);
+  backdrop-filter: blur(5px);
+}
+
+.box {
+  background-color: rgba(206, 206, 206, 0.89);
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 130px;
+  position: relative;
+}
+
+.box h3 {
+  position: absolute;
+  top: 10px;
+}
+
+.box h1 {
+  position: absolute;
+  bottom: 35px;
+  font-size: 40px;
+}

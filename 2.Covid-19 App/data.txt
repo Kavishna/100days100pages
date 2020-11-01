@@ -1,0 +1,19 @@
+today i learned fetch api and backdrop filter
+
+covid-19 data from
+>> https://hpb.health.gov.lk/en/api-documentation
+
+Fetch API Introduction 
+by Brad Traversy
+>> https://www.youtube.com/watch?v=Oive66jrwBs&t=125s
+
+Backdrop Filter CSS Blur
+by Adrian Twarog
+>> https://www.youtube.com/watch?v=wiIbol5tZaI
+
+fonts by
+>> https://www.fonts.google.com 
+
+box shadows by 
+>> https://getcssscan.com/css-box-shadow-examples?ref=devto
+
