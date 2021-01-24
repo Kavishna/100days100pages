@@ -1,1 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background Generator</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
 
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+        flex-direction: column;
+        background: linear-gradient(rgb(67, 101, 194), tomato);
+      }
+
+      h1 {
+        text-transform: uppercase;
+        font-size: 40px;
+        letter-spacing: 5px;
+        text-align: center;
+        margin: 20px;
+        /* -----------------------Belnd mode by--------------------- */
+        /* https://stackoverflow.com/questions/11167281/webkit-css-to-control-the-box-around-the-color-in-an-inputtype-color */
+        mix-blend-mode: difference;
+        color: white;
+      }
+
+      label {
+        mix-blend-mode: difference;
+        color: white;
+      }
+
+      input {
+        margin: 20px;
+        border: none;
+        background: none;
+        height: 40px;
+        border: 2px solid white;
+        padding: 0;
+      }
+
+      input[type="color"]::-webkit-color-swatch-wrapper {
+        padding: 0;
+      }
+
+      input:focus {
+        outline: none;
+        border: 2px solid rgb(255, 255, 255);
+      }
+
+      .colors {
+        margin-top: 50px;
+        display: flex;
+        width: 300px;
+        justify-content: space-between;
+        text-align: center;
+      }
+
+      label {
+        display: block;
+      }
+
+      h3 {
+        margin-top: 50px;
+        mix-blend-mode: difference;
+        color: white;
+      }
+
+      .color1,
+      .color2 {
+        position: relative;
+      }
+
+      p {
+        font-weight: bolder;
+        mix-blend-mode: difference;
+        color: white;
+      }
+
+      .message {
+        height: 40px;
+        width: 90px;
+        background-color: rgb(45, 45, 73);
+        position: absolute;
+        top: 120px;
+        border-radius: 10px;
+        color: aliceblue;
+        display: none;
+      }
+
+      .active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        -webkit-animation: fadeinout 3s linear forwards;
+        animation: fadeinout 3s linear forwards;
+      }
+
+      .css {
+        margin-top: 20px;
+        position: relative;
+        background-color: rgb(24, 31, 39);
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .css .message {
+        top: 45px;
+        left: 50%;
+        transform: translate(-50%);
+      }
+
+      @-webkit-keyframes fadeinout {
+        0%,
+        100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeinout {
+        0%,
+        100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="blend">Background Generator</h1>
+    <div class="colors">
+      <div class="color1">
+        <label for="color1 " class="blend">Color Left</label>
+        <input
+          type="color"
+          value="#000428"
+          class="blend"
+          name="color1"
+          id="color1"
+        />
+        <p class="color1hex blend"></p>
+        <div class="message">COPIED!</div>
+      </div>
+      <div class="color2">
+        <label for="color2" class="blend">Color Right</label>
+        <input
+          type="color"
+          class="blend"
+          value="#004e92"
+          name="color2"
+          id="color2"
+        />
+        <p class="color2hex blend"></p>
+        <div class="message">COPIED!</div>
+      </div>
+    </div>
+
+    <h3>Click on any value to COPY color</h3>
+
+    <div class="css">
+      <p id="cssvalue">hello</p>
+      <div class="message">COPIED!</div>
+    </div>
+
+    <script>
+      const color1 = document.getElementById("color1");
+      const color2 = document.getElementById("color2");
+      const hex1 = document.querySelector(".color1hex");
+      const hex2 = document.querySelector(".color2hex");
+      const p = document.querySelectorAll("p");
+      const messages = document.querySelectorAll(".message");
+      const rgba = document.getElementById("cssvalue");
+
+      document.body.style.background = `linear-gradient(to right,${color1.value}, ${color2.value})`;
+
+      hex1.innerHTML = color1.value;
+      hex2.innerHTML = color2.value;
+      rgba.innerHTML = `linear-gradient (to right,${hexToRGB(
+        color1.value
+      )}, ${hexToRGB(color2.value)})`;
+
+      function onColorChange(e) {
+        return e.target.value;
+      }
+
+      function setColor(color, p, input, rgba) {
+        document.body.style.background = color;
+        p.innerHTML = input.value;
+        rgba.innerHTML = color;
+      }
+
+      color1.addEventListener("input", (e) => {
+        const color = onColorChange(e);
+        const rgb1 = hexToRGB(color);
+        const rgb2 = hexToRGB(color2.value);
+
+        const linearGradient = `linear-gradient(to right,${rgb1}, ${rgb2})`;
+
+        setColor(linearGradient, hex1, color1, rgba);
+      });
+
+      color2.addEventListener("input", (e) => {
+        const color = onColorChange(e);
+        const rgb1 = hexToRGB(color1.value);
+        const rgb2 = hexToRGB(color);
+
+        const linearGradient = `linear-gradient(to right,${rgb1}, ${rgb2})`;
+
+        setColor(linearGradient, hex2, color2, rgba);
+      });
+
+      function hexToRGB(h) {
+        let r = 0,
+          g = 0,
+          b = 0;
+
+        // 3 digits
+        if (h.length == 4) {
+          r = "0x" + h[1] + h[1];
+          g = "0x" + h[2] + h[2];
+          b = "0x" + h[3] + h[3];
+
+          // 6 digits
+        } else if (h.length == 7) {
+          r = "0x" + h[1] + h[2];
+          g = "0x" + h[3] + h[4];
+          b = "0x" + h[5] + h[6];
+        }
+
+        return "rgb(" + +r + "," + +g + "," + +b + ")";
+      }
+
+      p[0].onclick = function () {
+        document.execCommand("copy");
+        messages[0].classList.add("active");
+        setTimeout(() => {
+          messages[0].classList.remove("active");
+        }, 4000);
+      };
+
+      p[0].addEventListener("copy", function (event) {
+        event.preventDefault();
+        if (event.clipboardData) {
+          event.clipboardData.setData("text/plain", p[0].textContent);
+        }
+      });
+
+      p[1].onclick = function () {
+        document.execCommand("copy");
+        messages[1].classList.add("active");
+        setTimeout(() => {
+          messages[1].classList.remove("active");
+        }, 4000);
+      };
+
+      p[1].addEventListener("copy", function (event) {
+        event.preventDefault();
+        if (event.clipboardData) {
+          event.clipboardData.setData("text/plain", p[1].textContent);
+        }
+      });
+
+      p[2].onclick = function () {
+        document.execCommand("copy");
+        messages[2].classList.add("active");
+        setTimeout(() => {
+          messages[2].classList.remove("active");
+        }, 4000);
+      };
+
+      p[2].addEventListener("copy", function (event) {
+        event.preventDefault();
+        if (event.clipboardData) {
+          event.clipboardData.setData("text/plain", p[2].textContent);
+        }
+      });
+    </script>
+  </body>
+</html>
